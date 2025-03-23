@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Charity Donation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Headland+One&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="bg-gray-900 text-white">
+
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <div class="w-16 bg-gray-800 flex flex-col justify-end items-center py-4 space-y-8">    
+      <div class="text-purple-500"><i class="fas fa-home text-2xl"></i></div>     
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col">
+      <!-- Header -->
+      <div class="flex justify-between items-center p-4 bg-gray-800">
+        <div class="text-purple-500 flex items-center">
+          <i class="fas fa-user text-2xl"></i>
+          <span class="ml-2">User: <span id="walletAddress">Not Connected</span></span>
+        </div>
+        <div class="absolute left-1/2 transform -translate-x-1/2 text-white-500 text-4xl font-extrabold" style="font-family: 'Headland One', serif;">
+          TrustFunded
+        </div>
+          
+        <div class="space-x-2">          
+          <button id="connectBtn" class="bg-blue-500 text-white px-4 py-2 rounded">Connect</button>
+          <button id="disconnectBtn" class="bg-red-500 text-white px-4 py-2 rounded">Disconnect</button>
+        </div>
+      </div>
+
+      <!-- Main Section -->
+      <div class="flex-1 flex flex-col justify-center items-center text-center space-y-4">
+        <div class="text-5xl font-bold">
+          <span>HOPE</span>
+          <span class="text-purple-500">GROWS</span>
+          <i class="fas fa-donate text-white mx-2"></i>
+          <span class="text-purple-500">WITH</span>
+          <span>CHARITY</span>
+        </div>
+
+        <div class="flex flex-col items-center space-y-4 mt-4">
+          <input type="number" id="donationAmount" placeholder="Enter amount in ETH" min="0" step="0.01" class="p-2 rounded text-black w-64">
+          <button id="donateNowBtn" class="bg-purple-500 text-white px-4 py-2 rounded">Donate Now</button>
+          <p><strong>Total Donations Collected:</strong> <span id="totalDonations">0 ETH</span></p>
+        </div>
+
+        <!-- Donation History Table -->
+        <div class="mt-6 w-4/5 bg-gray-800 p-4 rounded overflow-x-auto">
+          <h3 class="text-xl mb-4">Donation History:</h3>
+          <table class="min-w-full text-white">
+            <thead>
+              <tr class="bg-gray-700">
+                <th class="py-2 px-4 border-b border-gray-600">Donor Address</th>
+                <th class="py-2 px-4 border-b border-gray-600">Amount (ETH)</th>
+                <th class="py-2 px-4 border-b border-gray-600">Timestamp</th>
+              </tr>
+            </thead>
+            <tbody id="donationHistoryTable">
+              <!-- Rows will be inserted here dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="bg-gray-800 p-4 text-center">
+        <p>Thank you for using TrustFunded !!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
